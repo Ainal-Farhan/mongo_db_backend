@@ -1,0 +1,17 @@
+{
+  "name": "mongo_db_backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "nodemon app.js",
+    "start": "node app.js"
+  },
+  "keywords": [
+    "express",
+    "nodeJS",
+    "mongoDB"
+  ],
+  "author": "ainal",
+  "license": "ISC"
+}
