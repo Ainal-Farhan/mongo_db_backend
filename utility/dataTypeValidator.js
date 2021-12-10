@@ -6,15 +6,8 @@ module.exports = {
     "data_types": {
         "string": {
             "value": "string",
-            "rules": {
-                "format": ["UTF-8"]
-            },
-            "verify": (value) => {
-                try {
-                    return typeof value === "string" ? require('utf-8-validate')(Buffer.from(value, "utf8")) : false;
-                }
-                catch (_) { return false; }
-            }
+            "rules": {},
+            "verify": (value) => typeof value === "string",
         },
         "integer": {
             "value": "integer",
@@ -67,5 +60,13 @@ module.exports = {
             "rules": {},
             "verify": (value) => typeof value === "string" ? (new RegExp('^[0-1]+$').test(value)) : false,
         },
-    }
+        "instance_of_mongo_client": {
+            "value": "instance_of_mongo_client",
+            "rules": {},
+            "verify": (value) => {
+                const { MongoClient } = require("mongodb");
+                return valus instanceof MongoClient;
+            }
+        }
+    },
 };

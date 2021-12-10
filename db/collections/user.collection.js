@@ -8,10 +8,12 @@ module.exports = {
         "first_name": {
             "type": dataTypes.string.value,
             "allow_null": false,
+            "default": "",
         },
         "last_name": {
             "type": dataTypes.string.value,
             "allow_null": true,
+            "default": "",
         }
     },
     collectionName

@@ -9,8 +9,9 @@ fs
     .readdirSync(__dirname)
     .filter(file => {
         // filter all found files
-        // remove base file (index.collection.js) and any files which is not javascript files
-        return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
+        // remove base file (index.js) and any files which is not javascript files
+        const fileExt = ".collection.js";
+        return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-Math.abs(fileExt.length)) === fileExt);
     })
     .forEach(file => {
         // import file

@@ -5,10 +5,16 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-const dbManager = require("./db/index.db");
+const dbManager = require("./db");
 
 (async () => {
-    await dbManager.startProcess(dbManager.processes.insert_one.process_name, ["users", { first_name: ["Ainal Farhan"] }]);
+    await dbManager.sync(false);
+    const params = dbManager.getProcessParams();
+    if (params !== null) {
+        params.collectionName.value = "users";
+        params.data.value = {first_name: "ainal farhan" };
+        console.log("insert: " + (await dbManager.startProcess("insert_one", params) ? "success" : "failed"));
+    }
 })();
 
 const PORT = 8380;
